@@ -47,6 +47,7 @@ SRCS += get_array_of_strings_from_tbl.c
 SRCS += get_bool_from_tbl.c
 SRCS += get_int_from_tbl.c
 SRCS += get_str_from_tbl.c
+SRCS += put_tbl.c
 
 OBJS = $(SRCS:.c=.o)
 #----------------------------------
