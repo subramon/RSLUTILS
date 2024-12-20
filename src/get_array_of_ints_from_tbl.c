@@ -1,3 +1,5 @@
+// TODO P1 This function should be replaced to look like 
+// get_array_of_strings
 #include "luaconf.h"
 #include "lua.h"
 #include "lauxlib.h"
