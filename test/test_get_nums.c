@@ -5,7 +5,7 @@
 #include <lua.h>
 #include <lualib.h>
 #include "q_macros.h"
-#include "get_array_of_strings.h"
+#include "get_array_of_nums.h"
 #include "mk_lua_state.h"
 
 int
@@ -14,10 +14,10 @@ main(
 {
   int status = 0;
   lua_State *L = NULL;
-  char **X = NULL; uint32_t nX = 0;
+  double *X = NULL; uint32_t nX = 0;
 
   L = mk_lua_state(); if ( L == NULL ) { go_BYE(-1); }
-  status = luaL_dostring(L, "foo = require 'foo'");
+  status = luaL_dostring(L, "foo = require 'return_array_of_nums'");
   int chk = lua_gettop(L); if ( chk != 0 ) { go_BYE(-1); }
   //--------------------
   lua_getglobal(L, "foo");
@@ -34,17 +34,12 @@ main(
     lua_pop(L, 1);
     go_BYE(-1); 
   }
-  status = get_array_of_strings(L, 2, &X, &nX); cBYE(status);
+  status = get_array_of_nums(L, 2, &X, &nX); cBYE(status);
   for ( uint32_t i = 0; i < nX; i++ ) { 
-    printf("%u:%s\n", i, X[i]);
+    printf("%u:%lf\n", i, X[i]);
   }
   printf("All done\n");
 BYE:
-  if ( X != NULL ) { 
-    for ( uint32_t i = 0; i < nX; i++ ) { 
-      free_if_non_null(X[i]);
-    }
-    free_if_non_null(X);
-  }
+  free_if_non_null(X);
   return status;
 }
