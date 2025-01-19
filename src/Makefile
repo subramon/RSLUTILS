@@ -42,11 +42,10 @@ SRCS := bridge_read_configs.c
 SRCS += load_configs.c
 SRCS += mk_lua_state.c
 SRCS += check_args_is_table.c
-SRCS += get_array_of_ints_from_tbl.c
-# OLD SRCS += get_array_of_strings_from_tbl.c
+SRCS += get_array_of_nums.c
 SRCS += get_array_of_strings.c
 SRCS += get_bool_from_tbl.c
-SRCS += get_int_from_tbl.c
+SRCS += get_num_from_tbl.c
 SRCS += get_str_from_tbl.c
 SRCS += put_tbl.c
 
